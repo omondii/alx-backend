@@ -6,7 +6,8 @@ from typing import List
 
 
 def index_range(page: int, page_size: int) -> tuple:
-    """ Returns a tuple of size two containing a start index and an end index """
+    """ Returns a tuple of size two containing a start
+    index and an end index """
     start = (page - 1) * page_size
     end = start + page_size
     return start, end
@@ -32,14 +33,14 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """ takes two integer arguments page and page_size
-            and return the appropriate page of the dataset 
-            """
-            assert isinstance(page, int) and page > 0, "Type Error"
-            assert isinstance(page_size, int) and page_size > 0, "Type Error"
-            with open(self.DATA_FILE) as f:
-                 reader = csv.reader(f)
-                 data = list(reader)
+        """ takes two integer arguments page and page_size
+        and return the appropriate page of the dataset
+        """
+        assert isinstance(page, int) and page > 0, "Type Error"
+        assert isinstance(page_size, int) and page_size > 0, "Type Error"
+        with open(self.DATA_FILE) as f:
+            reader = csv.reader(f)
+            data = list(reader)
 
             start, end = index_range(page, page_size)
             return data[start:end] if start < len(data) else []
