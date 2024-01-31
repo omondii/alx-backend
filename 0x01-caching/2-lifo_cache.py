@@ -7,10 +7,13 @@ from collections import OrderedDict
 class LIFOCache(BaseCaching):
     """ A caching system implemented using FIFO """
     def __init__(self):
+        """ Initialize the class """
         super().__init__()
         self.cache_data = OrderedDict()
 
     def put(self, key,item):
+        """ Assign to the dictionary self.cache_data the item
+        value for the key key"""
         if key is not None and item is not None:
             self.cache_data[key] = item
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
@@ -18,4 +21,5 @@ class LIFOCache(BaseCaching):
                 print('DISCARD: {}'.format(key))
 
     def get(self, key):
+        """ Return the value in self.cache_data linked to key """
         return self.cache_data(key, None)

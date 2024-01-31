@@ -11,6 +11,8 @@ class FIFOCache(BaseCaching):
         self.cache_data = OrderedDict()
 
     def put(self, key,item):
+        """ Assign to the dictionary self.cache_data the item
+        value for the key key"""
         if key is not None and item is not None:
             self.cache_data[key] = item
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
@@ -18,4 +20,5 @@ class FIFOCache(BaseCaching):
                 print('DISCARD: {}'.format(key))
 
     def get(self, key):
+        """ Return the value in self.cache_data linked to key """
         return self.cache_data.get(key, None)
