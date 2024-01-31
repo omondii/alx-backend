@@ -13,7 +13,7 @@ class MRUCache(BaseCaching):
         super().__init__()
         self.cache_data = OrderedDict()
 
-    def put(self, key, item):
+    def put(self, key: str, item: str) -> None:
         """ assign to the dictionary self.cache_data the item
         item for the key key """
         if key is not None and item is not None:
@@ -24,9 +24,9 @@ class MRUCache(BaseCaching):
             self.cache_data[key] = item
 
 
-    def get(self, key):
+    def get(self, key: str) -> str:
         """ Return the item in self.cache_data linked to key """
         if key not in self.cache_data:
             return None
         else:
-            return self.cache_data[key]
+            return self.cache_data.get(key, None)
