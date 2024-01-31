@@ -2,6 +2,7 @@
 """ A FIFOCaching system """
 from base_caching import BaseCaching
 
+
 class LIFOCache(BaseCaching):
     """ A caching system implemented using FIFO """
     def __init__(self):
@@ -24,4 +25,3 @@ class LIFOCache(BaseCaching):
             return None
         else:
             return self.cache_data.get(key, None)
-        
