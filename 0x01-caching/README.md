@@ -39,3 +39,8 @@ A cache is much faster to access than the original data source hence reduced res
 3. <b> LRU </b>
 -> /*Least Recently Used*/ - removes the least recently used item when the cache is full. 
 -> Assumes that data that hasn't been used is less likely to be accessed soon
+
+4. <b> MRU </b>
+-> /*Most Recently Used*/ - removes the most recently used items from the cache when it is full. 
+-> Assumes the most recently used is more likely to be accessed again soon
+ 
