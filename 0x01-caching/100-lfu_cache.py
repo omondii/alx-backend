@@ -13,23 +13,21 @@ class LFUCache(BaseCaching):
         super().__init__()
         self.cache_data = OrderedDict()
 
-
     def put(self, key: str, item: str) -> None:
         """ assign to the dictionary self.cache_data the item
         item for the key key """
         if key is not None and item is not None:
             if key in self.cache_data:
-             self.cache_data.pop(key)
+                self.cache_data.pop(key)
             else:
                 if len(self.cache_data) >= self.MAX_ITEMS:
-                # Find the key with the least frequency.
-                    delKey = min(self.cache_data.keys(), key = lambda k: self.cache_data[k][0])
+                    # Find the key with the least frequency.
+                    delKey = min(self.cache_data.keys(), key=lambda k:
+                                 self.cache_data[k][0])
                     print(f'DISCARD: {delKey}')
                     self.cache_data.pop(delKey)
 
         self.cache_data[key] = item
-
-
 
     def get(self, key: str) -> str:
         """ Return the item in self.cache_data linked to key """
