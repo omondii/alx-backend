@@ -13,19 +13,20 @@ class LRUCache(BaseCaching):
         super().__init__()
         self.cache_data = OrderedDict()
 
-    def put(self, key, value):
+    def put(self, key: str, item: str) -> None:
         """ assign to the dictionary self.cache_data the item
-        value for the key key """
-        if key is not None and value is not None:
-            self.cache_data[key] = value
+        item for the key key """
+        if key is not None and item is not None:
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                lru_key = next(iter(self.cache_data))
-                print('DISCARD: {}'.format(lru_key))
-                del self.cache_data[lru_key]
+                lruKey = next(iter(self.cache_data))
+                print(f'DISCARD: {lruKey}')
+                del self.cache_data[lruKey]
+            
+            self.cache_data[key] = item
 
-    def get(self, key):
-        """ Return the value in self.cache_data linked to key """
-        if key not in self.cache_data:
+    def get(self, key: str) -> str:
+        """ Return the item in self.cache_data linked to key """
+        if key is None:
             return None
         else:
-            return self.cache_data[key]
+            return self.cache_data.get(key, None)

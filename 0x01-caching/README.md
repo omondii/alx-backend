@@ -35,3 +35,7 @@ A cache is much faster to access than the original data source hence reduced res
 
 2. <b> LIFO </b>
 -> Removes the recently added items when the cache is full. Last item added is removed first
+
+3. <b> LRU </b>
+-> /*Least Recently Used*/ - removes the least recently used item when the cache is full. 
+-> Assumes that data that hasn't been used is less likely to be accessed soon
