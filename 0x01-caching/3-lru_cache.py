@@ -21,7 +21,7 @@ class LRUCache(BaseCaching):
                 lruKey = next(iter(self.cache_data))
                 print(f'DISCARD: {lruKey}')
                 del self.cache_data[lruKey]
-            
+
             self.cache_data[key] = item
 
     def get(self, key: str) -> str:
