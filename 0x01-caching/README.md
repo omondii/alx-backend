@@ -32,3 +32,6 @@ A cache is much faster to access than the original data source hence reduced res
 -> Refers to a component used to store copies of frequently accessed data in a cache. 
 1. <b> FIFO </b>
 -> A cache replacement mechanism where the oldest items are removed first when the cache reaches its max capacity
+
+2. <b> LIFO </b>
+-> Removes the recently added items when the cache is full. Last item added is removed first

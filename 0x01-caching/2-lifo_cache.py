@@ -8,17 +8,20 @@ class LIFOCache(BaseCaching):
         """ Initialize the class """
         super().__init__()
 
-    def put(self, key, item):
+    def put(self, key: str, item: str) -> None:
         """ Assign to the dictionary self.cache_data the item
         value for the key key"""
         if key is not None and item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
-                discarded_key = list(self.cache_data.keys())[-1]
-                print('DISCARD: {}'.format(discarded_key))
-                del self.cache_data[discarded_key]
-
+                delKey = list(self.cache_data.keys())[-1]
+                print(f'DISCARD: {delKey}')
+                del self.cache_data[delKey]
             self.cache_data[key] = item
 
-    def get(self, key):
+    def get(self, key: str) -> str:
         """ Return the value in self.cache_data linked to key """
-        return self.cache_data[key] if key in self.cache_data else None
+        if key is None:
+            return None
+        else:
+            return self.cache_data.get(key, None)
+        
