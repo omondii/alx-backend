@@ -8,6 +8,7 @@ class LRUCache(BaseCaching):
     Removes the last used item
     """
     def __init__(self):
+        """ Initialize the class """
         super().__init__()
 
     def put(self, key, value):
@@ -20,6 +21,7 @@ class LRUCache(BaseCaching):
                 self.cache_data.popitem(last = False)
 
     def get(self, key):
+        """ Return the value in self.cache_data linked to key """
         if key not in self.cache_data:
             return -1
         else:
