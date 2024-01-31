@@ -4,7 +4,7 @@ from base_caching import BaseCaching
 from collections import OrderedDict
 
 
-class FIFOCache(BaseCaching):
+class LIFOCache(BaseCaching):
     """ A caching system implemented using FIFO """
     def __init__(self):
         super().__init__()
@@ -14,8 +14,8 @@ class FIFOCache(BaseCaching):
         if key is not None and item is not None:
             self.cache_data[key] = item
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                key, value = self.cache_data.popitem(last=False)
+                key, value = self.cache_data.popitem(last=True)
                 print('DISCARD: {}'.format(key))
 
     def get(self, key):
-        return self.cache_data.get(key, None)
+        return self.cache_data(key, None)
