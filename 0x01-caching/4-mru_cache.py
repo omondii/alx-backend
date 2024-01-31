@@ -13,18 +13,19 @@ class MRUCache(BaseCaching):
         super().__init__()
         self.cache_data = OrderedDict()
 
-    def put(self, key, value):
+    def put(self, key, item):
         """ assign to the dictionary self.cache_data the item
-        value for the key key """
-        if key is not None and value is not None:
-            self.cache_data[key] = value
+        item for the key key """
+        if key is not None and item is not None:
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 delKey, _ = self.cache_data.popitem(last = True)
                 print('DISCARD: {}'.format(delKey))
 
+            self.cache_data[key] = item
+
 
     def get(self, key):
-        """ Return the value in self.cache_data linked to key """
+        """ Return the item in self.cache_data linked to key """
         if key not in self.cache_data:
             return None
         else:
