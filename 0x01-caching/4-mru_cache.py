@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" LRU caching system """
+""" MRU caching system """
 from base_caching import BaseCaching
 from collections import OrderedDict
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """ Implement a LRU caching system
     Removes the last used item
     """
@@ -19,9 +19,9 @@ class LRUCache(BaseCaching):
         if key is not None and value is not None:
             self.cache_data[key] = value
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                lru_key = next(iter(self.cache_data))
-                print('DISCARD: {}'.format(lru_key))
-                del self.cache_data[lru_key]
+                delKey, _ = self.cache_data.popitem(last = True)
+                print('DISCARD: {}'.format(delKey))
+
 
     def get(self, key):
         """ Return the value in self.cache_data linked to key """
