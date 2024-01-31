@@ -18,11 +18,10 @@ class MRUCache(BaseCaching):
         item for the key key """
         if key is not None and item is not None:
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-                delKey, _ = self.cache_data.popitem(last = True)
+                delKey, _ = self.cache_data.popitem(last=True)
                 print('DISCARD: {}'.format(delKey))
 
             self.cache_data[key] = item
-
 
     def get(self, key: str) -> str:
         """ Return the item in self.cache_data linked to key """
