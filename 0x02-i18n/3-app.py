@@ -11,16 +11,20 @@ class Config():
     BABEL_DEFAULT_TIMEZONE = "UTC"
     LANGUAGES = ["en", "fr"]
 
+
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
+
 
 @app.route('/')
 def index():
     """ Renders the homepage """
     home_title = _("home_title")
     home_header = _("home_header")
-    return render_template('3-index.html', home_title=home_title, home_header=home_header)
+    return render_template('3-index.html',
+                           home_title=home_title, home_header=home_header)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
