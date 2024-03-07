@@ -1,5 +1,7 @@
 /**
  * implements the Subscribe messaging paradigm.
+ * This creates a redis-based queuing system, the subscriber.js processes
+ * a job created by publisher.js
  * 
  */
 import { createClient } from 'redis';
