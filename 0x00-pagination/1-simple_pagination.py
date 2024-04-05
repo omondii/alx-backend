@@ -36,11 +36,10 @@ class Server:
         """ takes two integer arguments page and page_size
         and return the appropriate page of the dataset
         """
-        assert isinstance(page, int) and page > 0, "Type Error"
-        assert isinstance(page_size, int) and page_size > 0, "Type Error"
-        with open(self.DATA_FILE) as f:
-            reader = csv.reader(f)
-            data = list(reader)
-
-            start, end = index_range(page, page_size)
-            return data[start:end] if start < len(data) else []
+        assert type(page) == int and type(page_size) == int
+        assert page > 0 and page_size > 0
+        start, end = index_range(page, page_size)
+        data = self.dataset()
+        if start > len(data):
+            return []
+        return data[start:end]
